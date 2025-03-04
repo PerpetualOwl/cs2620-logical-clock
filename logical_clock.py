@@ -224,15 +224,7 @@ def start_machine(machine_id, clock_rate, port, peer_ports):
     vm = VirtualMachine(machine_id, clock_rate, port, peer_ports)
     vm.run()
 
-if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python logical_clock.py <machine_id> <base_port> [num_machines=3]")
-        sys.exit(1)
-    
-    machine_id = int(sys.argv[1])
-    base_port = int(sys.argv[2])
-    num_machines = int(sys.argv[3]) if len(sys.argv) > 3 else 3
-    
+def main(machine_id, base_port, num_machines):
     # Calculate ports for all machines
     all_ports = [base_port + i for i in range(num_machines)]
     
@@ -255,3 +247,14 @@ if __name__ == "__main__":
     
     # Start the machine
     start_machine(machine_id, clock_rate, port, peer_ports) 
+
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("Usage: python logical_clock.py <machine_id> <base_port> [num_machines=3]")
+        sys.exit(1)
+    
+    machine_id = int(sys.argv[1])
+    base_port = int(sys.argv[2])
+    num_machines = int(sys.argv[3]) if len(sys.argv) > 3 else 3
+    
+    main(machine_id, base_port, num_machines)

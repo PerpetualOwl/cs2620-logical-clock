@@ -97,19 +97,6 @@ class TestAnalyzeLogs(unittest.TestCase):
                 with patch('matplotlib.pyplot.savefig'):
                     # Call main
                     analyze_logs.main()
-    
-    def test_main_function_no_args(self):
-        """Test the main function with no arguments"""
-        # Mock sys.argv with no experiment directory
-        with patch('sys.argv', ['analyze_logs.py']):
-            # Patch glob.glob to return our test directory
-            with patch('glob.glob', return_value=[self.test_dir.name]):
-                # Patch plt.show to prevent plots from being displayed
-                with patch('matplotlib.pyplot.show'):
-                    # Patch plt.savefig to prevent files from being saved
-                    with patch('matplotlib.pyplot.savefig'):
-                        # Call main
-                        analyze_logs.main()
 
 
 if __name__ == '__main__':

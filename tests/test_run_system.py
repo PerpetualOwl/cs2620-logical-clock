@@ -2,7 +2,7 @@ import unittest
 import sys
 import os
 import tempfile
-from unittest.mock import patch, MagicMock, call
+from unittest.mock import patch, MagicMock, call, ANY
 
 # Add parent directory to path to import run_system
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -65,8 +65,8 @@ class TestRunSystem(unittest.TestCase):
         
         # Check that Popen was called with the correct commands
         mock_popen.assert_has_calls([
-            call(['python', 'logical_clock.py', '0', '8000', '2']),
-            call(['python', 'logical_clock.py', '1', '8000', '2'])
+            call(['python', 'logical_clock.py', '0', '8000', '2'], env=ANY),
+            call(['python', 'logical_clock.py', '1', '8000', '2'], env=ANY)
         ])
         
         # Check that the process was terminated

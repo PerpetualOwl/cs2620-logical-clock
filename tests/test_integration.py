@@ -78,6 +78,7 @@ class TestVirtualMachineIntegration(unittest.TestCase):
         # Check that each VM has connected to the other two
         for vm in self.vms:
             self.assertEqual(len(vm.peers), 2)
+        print("FINISH_VM_CONNECTIONS")
     
     def test_message_sending_and_receiving(self):
         """Test that VMs can send and receive messages"""
@@ -117,6 +118,7 @@ class TestVirtualMachineIntegration(unittest.TestCase):
         self.assertEqual(self.vms[0].logical_clock, 1)  # Incremented for send
         self.assertEqual(self.vms[1].logical_clock, 2)  # max(0, 1) + 1
         self.assertEqual(self.vms[2].logical_clock, 2)  # max(0, 1) + 1
+        print("FINISH_MESSAGE_SENDING_AND_RECEIVING")
     
     def test_targeted_message_sending(self):
         """Test that VMs can send messages to specific peers"""
@@ -147,6 +149,7 @@ class TestVirtualMachineIntegration(unittest.TestCase):
         # Check that VM 1 received the message but VM 2 did not
         self.assertEqual(self.vms[1].message_queue.qsize(), 1)
         self.assertEqual(self.vms[2].message_queue.qsize(), 0)
+        print("FINISH_TARGETED_MESSAGE_SENDING")
     
     def test_multiple_message_exchange(self):
         """Test a sequence of message exchanges between VMs"""
@@ -185,6 +188,7 @@ class TestVirtualMachineIntegration(unittest.TestCase):
         self.assertEqual(self.vms[0].logical_clock, 1)  # Initial send
         self.assertEqual(self.vms[1].logical_clock, 3)  # Received 1, then sent (2+1)
         self.assertEqual(self.vms[2].logical_clock, 4)  # max(0, 1) + 1, then max(2, 3) + 1
+        print("FINISH_MULTIPLE_MESSAGE_EXCHANGE")
 
 
 if __name__ == '__main__':
