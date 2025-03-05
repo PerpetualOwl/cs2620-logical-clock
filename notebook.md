@@ -54,3 +54,15 @@ Answers:
 * Slow machines spend a lot of their time processing received messages. See trial 4 for the largest effect! Also, generally, the slower machine will do this.
 
 
+## Some useful graphs
+
+### Normal trial example:
+![Event Distribution](logs/original_trial5/plots/event_distribution.png)
+![Logical Clocks](logs/original_trial5/plots/queue_sizes.png)
+![Queue Sizes](logs/original_trial5/plots/queue_sizes.png)
+
+### Small Internal Probability - Variations
+![Showing more lagging](logs/small_internal_prob/plots/logical_clocks.png)
+
+### 5 Machines - Variations
+![5 Machines](logs/5_machines/plots/logical_clocks.png)

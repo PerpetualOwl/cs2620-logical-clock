@@ -179,6 +179,9 @@ if __name__ == "__main__":
         
         # 3. Run experiment with smaller probability of internal events
         run_experiment("small_internal_prob", 3, 8000, 60, 0.4, None)
+
+        # 4. Run experiment with 5 machines
+        run_experiment("5_machines", 5, 8000, 60)
         
         print("\nAll experiments completed successfully!")
     
