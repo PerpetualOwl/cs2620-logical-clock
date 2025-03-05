@@ -189,6 +189,8 @@ class VirtualMachine:
                         # Scale the remaining probability space (1 - internal_prob) into 3 equal parts
                         comm_type = random.randint(1, 3)
                         
+                        # Note that we can just replace comm_type 1 and 2 with a random number generator between all peers
+                        # This gives the same behavior (same distribution)
                         if comm_type == 1 and self.peers:
                             # Send to one random peer
                             target_idx = random.randint(0, len(self.peers) - 1)

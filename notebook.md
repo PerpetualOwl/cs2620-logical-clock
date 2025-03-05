@@ -39,3 +39,18 @@ wrapping up the implementation. getting ready for the demo. everything's gotta w
 
 ### Entry 2
 looking back on the whole process. learned a lot. writing it all down in this notebook. iterative development and testing saved us. lots of challenges but we made it through. it's been a wild ride, but i'm proud of what we've accomplished. this project taught me the value of persistence and the importance of learning from mistakes. note to self: keep this notebook as a reminder of the journey and the lessons learned. 
+
+### Answers to Questions
+Prompt: While working on this, keep a lab notebook in which you note the design decisions you have made. Then, run the scale model at least 5 times for at least one minute each time. Examine the logs, and discuss (in the lab book) the size of the jumps in the values for the logical clocks, drift in the values of the local logical clocks in the different machines (you can get a god’s eye view because of the system time), and the impact different timings on such things as gaps in the logical clock values and length of the message queue. Observations and reflections about the model and the results of running the model are more than welcome.
+
+Once you have run this on three virtual machines that can vary their internal times by an order of magnitude, try running it with a smaller variation in the clock cycles and a smaller probability of the event being internal. What differences do those variations make? Add these observations to your lab notebook. Play around, and see if you can find something interesting.
+
+
+Answers:
+* We noticed that when machines had similar clock rates, they would have the roughly the same logical clock over time (the difference is bounded). This is especially true if most of the work is internal. However, when we turned the probability of processing an internal event down, the slow machine was overwhelmed and could not catch up, because it could not process its message queue fast enough.
+* Obviously, the slowest machine always had the most message in the queue. In one experiment, we had a machine with clock rate 1 with machines with clock rates of 4 and 5, and it was overwhlemed by messages.
+* Small variation resulted in logical clocks that were very close to each other throughout time. 
+* There are small jumps because we receive messages often enough to catch up in small intervals. The biggest jumps are probably by 5.
+* Slow machines spend a lot of their time processing received messages. See trial 4 for the largest effect! Also, generally, the slower machine will do this.
+
+
