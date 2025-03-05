@@ -58,7 +58,7 @@ Answers:
 
 ### Normal trial example:
 ![Event Distribution](logs/original_trial5/plots/event_distribution.png)
-![Logical Clocks](logs/original_trial5/plots/queue_sizes.png)
+![Logical Clocks](logs/original_trial5/plots/logical_clocks.png)
 ![Queue Sizes](logs/original_trial5/plots/queue_sizes.png)
 
 ### Small Internal Probability - Variations
